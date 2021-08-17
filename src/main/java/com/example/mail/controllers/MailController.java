@@ -17,6 +17,6 @@ public class MailController {
     public void getMail(String mail){
         System.out.println(mail);
         mailCreator.send(mail);
-        System.out.println("Mail sended");
+        System.out.println("Mail sent");
     }
 }

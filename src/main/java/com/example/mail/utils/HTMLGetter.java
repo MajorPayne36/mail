@@ -68,7 +68,6 @@ public class HTMLGetter implements CommandLineRunner {
 
     /**
      * Run with program and fill data to HashMaps
-     * @param args
      */
     @Override
     public void run(String[] args){

@@ -2,18 +2,9 @@ package com.example.mail.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 @Service
 public class MailCreator {
@@ -42,25 +33,19 @@ public class MailCreator {
         var missingUrls = htmlGetter.getMissingUrls();
         if (missingUrls.size() != 0) {
             text.append("\nИсчезли следующие страницы:");
-            missingUrls.forEach((key, value) -> {
-                text.append("\n  --").append(key);
-            });
+            missingUrls.forEach((key, value) -> text.append("\n  --").append(key));
         }
 
         var newUrls = htmlGetter.getNewUrls();
         if (newUrls.size() != 0) {
             text.append("\nПоявились следующие новые страницы");
-            newUrls.forEach((key, value) -> {
-                text.append("\n  --").append(key);
-            });
+            newUrls.forEach((key, value) -> text.append("\n  --").append(key));
         }
 
         var modifiedUrls = htmlGetter.getModifiedUrls();
         if (modifiedUrls.size() != 0) {
             text.append("\nИзменились следующие страницы");
-            modifiedUrls.forEach((key, value) -> {
-                text.append("\n  --").append(key);
-            });
+            modifiedUrls.forEach((key, value) -> text.append("\n  --").append(key));
         }
 
         if (modifiedUrls.size() == 0 && newUrls.size() == 0 && missingUrls.size() == 0) {
